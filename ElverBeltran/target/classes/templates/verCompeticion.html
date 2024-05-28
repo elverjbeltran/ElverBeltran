@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Asociaciones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .btn {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e2e6ea;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+	<div class="container">
+    <h1 class="text-center">Lista de Competiciones</h1>
+    <a th:href="@{/verCompeticion/formCompeticion}" class="btn btn-primary">Agregar Nueva Competición</a>
+    <table  class="table">
+        <thead  class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+				<th>Monto del Premio</th>
+				<th>Fecha Inicial</th>
+				<th>Fecha Final</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="competicion : ${listaCompeticion}">
+                <td th:text="${competicion.id}">1</td>
+                <td th:text="${competicion.nombre}">Nombre Competición</td>
+				<td th:text="${competicion.montoPremio}">Monto del Premio</td>
+				<td th:text="${competicion.fechaInicio}">Fecha de Inicio</td>
+				<td th:text="${competicion.fechaFin}">Fecha de Fin</td>
+                <td>
+                    <a th:href="@{/competicion/editar/{id}(id=${competicion.id})}" class="btn btn-info btn-sm">Editar</a>
+                    <a th:href="@{/competicion/eliminar/{id}(id=${competicion.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	<a th:href="@{/}" class="btn btn-secondary">Volver a la página principal</a> <!-- Aquí se agrega el enlace para volver -->
+	</div>
+</body>
+</html>
