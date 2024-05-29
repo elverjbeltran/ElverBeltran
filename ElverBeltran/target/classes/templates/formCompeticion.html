@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Competición</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${competicion.id} == null ? 'Agregar Nueva Competición' : 'Editar Competición'"></h1>
+        <form th:action="@{/guardarCompeticion}" th:object="${competicion}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <label for="nombre">Nombre Competición:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" /><br/><br/>
+            <label for="montoPremio">Monto del Premio:</label>
+            <input type="text" id="montoPremio" th:field="*{montoPremio}" /><br/><br/>
+            <label for="fechaInicio">Fecha de Inicio:</label>
+            <input type="date" id="fechaInicio" th:field="*{fechaInicio}" /><br/><br/>
+            <label for="fechaFin">Fecha de Fin:</label>
+            <input type="date" id="fechaFin" th:field="*{fechaFin}" /><br/><br/>
+            <!-- Add other fields as necessary -->
+            <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+        </form>
+        <a th:href="@{/verCompeticion}" class="btn btn-secondary btn-block">Volver</a>
+    </div>
+</body>
+</html>

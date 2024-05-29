@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Entrenadores</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .btn {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e2e6ea;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Lista de Entrenadores</h1>
+        <a th:href="@{/verEntrenador/formEntrenador}" class="btn btn-primary">Agregar Nuevo Entrenador</a>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+					<th>Apellido</th>
+					<th>Edad</th>
+					<th>Nacionalidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="entrenador : ${listaEntrenador}">
+                    <td th:text="${entrenador.id}">1</td>
+                    <td th:text="${entrenador.nombre}">Nombre Entrenador</td>
+					<td th:text="${entrenador.apellido}">Apellido Entrenador</td>
+					<td th:text="${entrenador.edad}">Edad Entrenador</td>
+					<td th:text="${entrenador.nacionalidad}">Nacionalidad Entrenador</td>
+                    <td>
+                        <a th:href="@{/entrenador/editar/{id}(id=${entrenador.id})}" class="btn btn-info btn-sm">Editar</a>
+                        <a th:href="@{/entrenador/eliminar/{id}(id=${entrenador.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+		<a th:href="@{/}" class="btn btn-secondary">Volver a la página principal</a> <!-- Aquí se agrega el enlace para volver -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
