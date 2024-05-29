@@ -1,0 +1,17 @@
+com\example\app\crud\crudEntrenador.class
+com\example\app\variables\Jugador.class
+com\example\app\variables\club.class
+com\example\app\controlador\controladorWebJugador.class
+com\example\app\crud\CrudClub.class
+com\example\app\crud\crudCompeticion.class
+com\example\app\controlador\ControladorPrincipal.class
+com\example\app\controlador\controladorWebClub.class
+com\example\app\crud\crudJugador.class
+com\example\app\ElverBeltranApplication.class
+com\example\app\variables\Asociacion.class
+com\example\app\variables\Competicion.class
+com\example\app\crud\crudAsociacion.class
+com\example\app\controlador\controladorWebCompeticion.class
+com\example\app\variables\Entrenador.class
+com\example\app\controlador\controladorWebEntrenador.class
+com\example\app\controlador\controladorWebAsociacion.class
